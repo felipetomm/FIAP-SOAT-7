@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-api",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/FIAP.Presentation.API/FIAP.Presentation.API.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+  ]
+}
