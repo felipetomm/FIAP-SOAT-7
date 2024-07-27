@@ -1,6 +1,5 @@
-version: '3'
+version: "3"
 services:
-
   tech-challenge-db:
     image: postgres:16.3
     container_name: "TechChallenge_DB_Postgres"
@@ -28,8 +27,8 @@ services:
     networks:
       - tech-challenge-network
     ports:
-      - 8080:8080
+      - 8080:7274
 
 networks:
-    tech-challenge-network:
-      driver: bridge
+  tech-challenge-network:
+    driver: bridge

@@ -5,6 +5,7 @@ WORKDIR /source
 # Copia os arquivos do projeto
 COPY src/FIAP.Application/. ./src/FIAP.Application/
 COPY src/FIAP.Domain/. ./src/FIAP.Domain/
+COPY src/FIAP.ExternalService.WebAPI/. ./src/FIAP.ExternalService.WebAPI/
 COPY src/FIAP.Infrastructure.CrossCutting/. ./src/FIAP.Infrastructure.CrossCutting/
 COPY src/FIAP.Infrastructure.Data/. ./src/FIAP.Infrastructure.Data/
 COPY src/FIAP.Infrastructure.IoC/. ./src/FIAP.Infrastructure.IoC/
@@ -25,6 +26,9 @@ RUN update-ca-certificates -f
 
 # Copia os arquivos publicados do estágio de construção
 COPY --from=build /app .
+
+# Copia os sqls para as migrations
+COPY ./sql/.                  /app/sql
 
 # Define o usuário, se necessário (verifique se $APP_UID está definido)
 USER $APP_UID
