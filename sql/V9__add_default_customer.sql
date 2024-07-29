@@ -1,10 +1,10 @@
-insert into customer (
+insert into customers (
 	cpf,
 	name,
 	email,
 	phone,
-	created_at,
-	updated_at
+	created,
+	modified
 ) values (
 	'00000000019',
 	'Não Identificado',

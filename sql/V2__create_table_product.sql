@@ -1,9 +1,10 @@
-create table product (
+create table products (
     id bigserial primary key,
     name varchar(255) not null,
     description varchar(255) null,
     price double precision not null,
     quantity integer not null,
-    created_at timestamp not null default current_timestamp,
-    updated_at timestamp not null default current_timestamp
+    created timestamp not null default current_timestamp,
+    modified timestamp null default current_timestamp,
+    deleted bool default FALSE null
 );

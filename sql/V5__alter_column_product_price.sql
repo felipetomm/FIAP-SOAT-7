@@ -1,1 +1,1 @@
-alter table product alter column price type numeric(38, 2);
+alter table products alter column price type numeric(38, 2);
