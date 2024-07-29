@@ -11,6 +11,8 @@ public class DatabaseUpdatesMapping : IEntityTypeConfiguration<DatabaseUpdates>
     {
         entity.ToTable("database_updates");
 
+        entity.HasKey(x => x.Id);
+
         entity.Property(x => x.Id)
             .HasColumnName("id");
 
