@@ -26,6 +26,9 @@ public class ProductsMapping : IEntityTypeConfiguration<Products>
             .HasColumnName("deleted")
             .HasDefaultValueSql("0");
 
+        entity.Property(x => x.Hash)
+            .HasColumnName("hash");
+
         entity.Property(x => x.Name)
             .HasColumnName("name");
 

@@ -13,7 +13,7 @@ public class Customers : EntityBaseSoft<long>
     protected Customers() { }
 
     public Customers(
-        long id,
+        long? id,
         string name,
         string email,
         string phone,
@@ -30,11 +30,12 @@ public class Customers : EntityBaseSoft<long>
         if (!validationResult.IsValid())
             throw new ArgumentException(validationResult.GetErrorsMessage());
 
-        Id = id;
+        if (id.HasValue)
+            Id = id.Value;
         Name = name;
         Email = email;
         Phone = phone;
-        Cpf = cpf;
+        Cpf = cpf.OnlyDigits();
         Created = DateTime.UtcNow;
         Deleted = false;
         Hash = Guid.NewGuid();
@@ -52,7 +53,7 @@ public class Customers : EntityBaseSoft<long>
         if (name.IsEmpty())
             validationResult.AddError("Name is required");
 
-        if ((cpf.IsEmpty() || !cpf.IsValidCPF()) && !cpf.OnlyDigits().Equals("00000000019"))
+        if ((cpf.IsEmpty(numberOnly: true) || !cpf.IsValidCPF()) && !cpf.OnlyDigits().Equals("00000000019"))
             validationResult.AddError("CPF is empty ir invalid");
 
         if (email.IsEmpty() && phone.IsEmpty())

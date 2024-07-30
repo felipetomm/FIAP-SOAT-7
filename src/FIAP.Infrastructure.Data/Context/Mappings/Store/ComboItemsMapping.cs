@@ -26,6 +26,9 @@ public class ComboItemsMapping : IEntityTypeConfiguration<ComboItems>
             .HasColumnName("deleted")
             .HasDefaultValueSql("0");
 
+        entity.Property(x => x.Hash)
+            .HasColumnName("hash");
+
         entity.Property(x => x.ProductId)
             .HasColumnName("product_id");
 

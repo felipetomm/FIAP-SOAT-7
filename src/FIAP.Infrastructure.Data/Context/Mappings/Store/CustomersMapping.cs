@@ -26,6 +26,9 @@ public class CustomersMapping : IEntityTypeConfiguration<Customers>
             .HasColumnName("deleted")
             .HasDefaultValueSql("0");
 
+        entity.Property(x => x.Hash)
+            .HasColumnName("hash");
+
         entity.Property(x => x.Cpf)
             .HasColumnName("cpf");
 

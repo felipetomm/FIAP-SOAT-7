@@ -26,6 +26,9 @@ public class OrdersMapping : IEntityTypeConfiguration<Orders>
             .HasColumnName("deleted")
             .HasDefaultValueSql("0");
 
+        entity.Property(x => x.Hash)
+            .HasColumnName("hash");
+
         entity.Property(x => x.CustomerId)
             .HasColumnName("customer_id");
 

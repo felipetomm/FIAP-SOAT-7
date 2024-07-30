@@ -26,6 +26,9 @@ public class CombosMapping : IEntityTypeConfiguration<Combos>
             .HasColumnName("deleted")
             .HasDefaultValueSql("0");
 
+        entity.Property(x => x.Hash)
+            .HasColumnName("hash");
+
         entity.Property(x => x.OrderId)
             .HasColumnName("order_id");
     }

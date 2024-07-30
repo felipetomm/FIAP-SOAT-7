@@ -16,7 +16,7 @@ public class Products : EntityBaseSoft<long>
     protected Products() { }
 
     public Products(
-        long id,
+        long? id,
         string name,
         string description,
         decimal price,
@@ -36,7 +36,8 @@ public class Products : EntityBaseSoft<long>
         if (!validation.IsValid())
             throw new ArgumentException(validation.GetErrorsMessage());
 
-        Id = id;
+        if (id.HasValue)
+            Id = id.Value;
         Name = name;
         Description = description;
         Price = price;
