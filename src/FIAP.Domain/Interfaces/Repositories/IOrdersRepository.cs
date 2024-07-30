@@ -8,7 +8,7 @@ public interface IOrdersRepository
 
     Task<List<Orders>> FindAllAsync();
 
-    Task<Orders> FindById(long id);
+    Task<Orders> FindByIdAsync(long id);
 
     Task<List<Orders>> FindByStatusAsync(OrderStatus status);
 }

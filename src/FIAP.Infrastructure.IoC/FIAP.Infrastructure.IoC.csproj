@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FIAP.Infrastructure.Data\FIAP.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\FIAP.Domain\FIAP.Domain.csproj" />
+    <ProjectReference Include="..\FIAP.Application\FIAP.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
