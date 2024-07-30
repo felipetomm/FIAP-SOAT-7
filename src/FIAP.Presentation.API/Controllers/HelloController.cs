@@ -1,7 +1,6 @@
 using FIAP.Presentation.API.Base;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FIAP.Presentation.API.Controllers;
 
