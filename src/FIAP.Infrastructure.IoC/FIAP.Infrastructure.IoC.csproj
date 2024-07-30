@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\FIAP.Infrastructure.Data\FIAP.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\FIAP.Domain\FIAP.Domain.csproj" />
+    <ProjectReference Include="..\FIAP.Application\FIAP.Application.csproj" />
+    <ProjectReference Include="..\FIAP.Infrastructure.AutoMapper\FIAP.Infrastructure.AutoMapper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+</Project>

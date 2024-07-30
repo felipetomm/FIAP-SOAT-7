@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "sql/*": false
+  },
+  "editor.formatOnSave": true,
+  "dotnet.defaultSolution": "FIAP.sln",
+  "cSpell.words": [
+  ],
+}

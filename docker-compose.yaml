@@ -1,0 +1,34 @@
+version: "3"
+services:
+  tech-challenge-db:
+    image: postgres:16.3
+    container_name: "TechChallenge_DB_Postgres"
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=burguerdb
+    volumes:
+      - "./data:/var/lib/postgresql/data"
+      - ./sql/sql-initial.sql:/docker-entrypoint-initdb.d/db.sql:ro
+      #- "/etc/timezone:/etc/timezone:ro"
+      #- "/etc/localtime:/etc/localtime:ro"
+    networks:
+      - tech-challenge-network
+    ports:
+      - 5432:5432
+
+  tech-challenge-api:
+    image: tech-challenge-api
+    container_name: "TechChallenge_WebAPI"
+    restart: unless-stopped
+    depends_on:
+      - tech-challenge-db
+    networks:
+      - tech-challenge-network
+    ports:
+      - 8080:7274
+
+networks:
+  tech-challenge-network:
+    driver: bridge
