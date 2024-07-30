@@ -1,3 +1,4 @@
+using FIAP.Infrastructure.AutoMapper;
 using FIAP.Infrastructure.Data.Context;
 using FIAP.Infrastructure.IoC.Modules.System;
 
@@ -10,6 +11,8 @@ public static class NativeInjectorBootStrapper
     public static void RegisterServices(IServiceCollection services)
     {
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        AutoMapperConfig.RegisterMappings();
+
         // Register all ioc
         InjectSystem.Register(services);
 
