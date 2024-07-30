@@ -1,1 +1,1 @@
-alter table products add column category varchar(20) null;
+alter table products add column category int not null;
