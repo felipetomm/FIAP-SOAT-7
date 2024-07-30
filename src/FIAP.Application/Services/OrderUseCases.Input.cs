@@ -13,18 +13,28 @@ public partial class OrderUseCases
             ? await FindCustomerAsync(createOrderDto.CustomerId)
             : await FindDefaultCustomerAsync();
 
-        return await _repository.SaveAsync(new Orders(
+        var result = await _repository.SaveAsync(new Orders(
             combos: combos,
             customer: customer,
             status: Domain.Entities.Enums.OrderStatus.SENT_TO_KITCHEN
         ));
+
+        await _uow.CommitAsync();
+
+        return result;
     }
 
     public async Task<Orders> UpdateOrderAsync(UpdateOrderDto updateOrderDto)
     {
         var order = await _repository.FindByIdAsync(updateOrderDto.Id);
+
         order.NextOrderStatus(updateOrderDto.Status);
-        return await _repository.SaveAsync(order);
+
+        var result = await _repository.SaveAsync(order);
+
+        await _uow.CommitAsync();
+
+        return result;
     }
 
     ///

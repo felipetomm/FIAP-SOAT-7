@@ -7,7 +7,11 @@ public interface IOrderUseCases
 {
     Task<Orders> CreateAsync(CreateOrderDto createOrderDto);
 
+    Task<Orders> UpdateOrderAsync(UpdateOrderDto updateOrderDto);
+
     Task<Orders> FindOrderAsync(long id);
+
+    Task<List<Orders>> FindAllOrdersAsync();
 
     Task<List<Orders>> FindOrderByStatusAsync(OrderStatus status);
 }

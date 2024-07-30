@@ -15,4 +15,9 @@ public partial class OrderUseCases
     {
         return await _repository.FindByStatusAsync(status);
     }
+
+    public async Task<List<Orders>> FindAllOrdersAsync()
+    {
+        return await _repository.FindAllAsync();
+    }
 }

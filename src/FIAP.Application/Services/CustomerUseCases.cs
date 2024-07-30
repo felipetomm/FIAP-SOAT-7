@@ -2,15 +2,21 @@
 using FIAP.Application.Interfaces;
 using FIAP.Domain.Entities.Store;
 using FIAP.Domain.Interfaces.Repositories;
+using FIAP.Infrastructure.CrossCutting.Interfaces;
 
 namespace FIAP.Application.Services;
 
 public class CustomerUseCases : ICustomerUseCases
 {
     private readonly ICustomersRepository _repository;
-    public CustomerUseCases(ICustomersRepository repository)
+    private readonly IUnitOfWork _uow;
+    public CustomerUseCases(
+        ICustomersRepository repository,
+        IUnitOfWork uow
+    )
     {
         _repository = repository;
+        _uow = uow;
     }
 
     /// <summary>
@@ -24,7 +30,11 @@ public class CustomerUseCases : ICustomerUseCases
         if (optExistingCustomer?.Id != default)
             return optExistingCustomer;
 
-        return await _repository.SaveAsync(customer);
+        var result = await _repository.SaveAsync(customer);
+
+        await _uow.CommitAsync();
+
+        return result;
     }
 
     /// <summary>
