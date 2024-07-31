@@ -21,7 +21,7 @@ spec:
         io.kompose.service: tech-challenge-api
     spec:
       containers:
-        - image: tech-challenge-api
+        - image: felipetomm/fiap-soat-7:tech-challenge-api
           name: techchallenge-webapi
           ports:
             - containerPort: 7274

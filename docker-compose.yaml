@@ -19,7 +19,7 @@ services:
       - 5432:5432
 
   tech-challenge-api:
-    image: tech-challenge-api
+    image: felipetomm/fiap-soat-7:tech-challenge-api
     container_name: "TechChallenge_WebAPI"
     restart: unless-stopped
     depends_on:
@@ -27,7 +27,7 @@ services:
     networks:
       - tech-challenge-network
     ports:
-      - 8080:7274
+      - 8080:8080
 
 networks:
   tech-challenge-network:
