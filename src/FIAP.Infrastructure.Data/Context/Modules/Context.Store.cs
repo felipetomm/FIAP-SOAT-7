@@ -12,6 +12,7 @@ public partial class BaseDbContext : DbContext
     public DbSet<Customers> Customers { get; set; }
     public DbSet<Orders> Orders { get; set; }
     public DbSet<Products> Products { get; set; }
+    public DbSet<Payments> Payments { get; set; }
 
     public void CreatingStore(ModelBuilder modelBuilder)
     {
@@ -20,5 +21,6 @@ public partial class BaseDbContext : DbContext
         modelBuilder.ApplyConfiguration(new CustomersMapping());
         modelBuilder.ApplyConfiguration(new OrdersMapping());
         modelBuilder.ApplyConfiguration(new ProductsMapping());
+        modelBuilder.ApplyConfiguration(new PaymentsMapping());
     }
 }

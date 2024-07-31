@@ -11,6 +11,7 @@ public static partial class InjectSystem
     {
         services.AddScoped<ICustomerUseCases, CustomerUseCases>();
         services.AddScoped<IOrderUseCases, OrderUseCases>();
+        services.AddScoped<IPaymentUseCases, PaymentUseCases>();
         services.AddScoped<IProductUseCases, ProductUseCases>();
     }
 }

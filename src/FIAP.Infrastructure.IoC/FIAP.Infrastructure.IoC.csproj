@@ -5,6 +5,7 @@
     <ProjectReference Include="..\FIAP.Domain\FIAP.Domain.csproj" />
     <ProjectReference Include="..\FIAP.Application\FIAP.Application.csproj" />
     <ProjectReference Include="..\FIAP.Infrastructure.AutoMapper\FIAP.Infrastructure.AutoMapper.csproj" />
+    <ProjectReference Include="..\FIAP.ExternalService.WebAPI\FIAP.ExternalService.WebAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
