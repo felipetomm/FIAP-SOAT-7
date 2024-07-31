@@ -15,7 +15,7 @@ This project is a migration from the first version, implemented in Java+Spring. 
 - [Phase 1 (in Java)](https://github.com/felipetomm/FIAP-Java-Pos-Tech-Challenge-Api)
 - [Infrastructure Diagram](https://github.com/felipetomm/FIAP-SOAT-7/blob/main/FIAP-Fase2.drawio.png)
 - [K8S Files](https://github.com/felipetomm/FIAP-SOAT-7/tree/main/k8s)
-- ~~Postman~~
+- [Postman Collection and Environment](https://github.com/felipetomm/FIAP-SOAT-7/tree/main/postman)
 - ~~Video~~
 
 ### Docker
