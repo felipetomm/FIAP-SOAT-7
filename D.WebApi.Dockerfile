@@ -6,6 +6,7 @@ WORKDIR /source
 COPY src/FIAP.Application/. ./src/FIAP.Application/
 COPY src/FIAP.Domain/. ./src/FIAP.Domain/
 COPY src/FIAP.ExternalService.WebAPI/. ./src/FIAP.ExternalService.WebAPI/
+COPY src/FIAP.Infrastructure.AutoMapper/. ./src/FIAP.Infrastructure.AutoMapper/
 COPY src/FIAP.Infrastructure.CrossCutting/. ./src/FIAP.Infrastructure.CrossCutting/
 COPY src/FIAP.Infrastructure.Data/. ./src/FIAP.Infrastructure.Data/
 COPY src/FIAP.Infrastructure.IoC/. ./src/FIAP.Infrastructure.IoC/
