@@ -31,20 +31,8 @@ spec:
             - name: POSTGRES_USER
               value: postgres
           image: postgres:16.3
-          name: techchallenge-db-postgres
+          name: tech-challenge-db
           ports:
             - containerPort: 5432
               protocol: TCP
-          volumeMounts:
-            - mountPath: /docker-entrypoint-initdb.d/db.sql
-              name: tech-challenge-db-cm1
-              readOnly: true
-              subPath: db.sql
       restartPolicy: Always
-      volumes:
-        - configMap:
-            items:
-              - key: sql-initial.sql
-                path: db.sql
-            name: tech-challenge-db-cm1
-          name: tech-challenge-db-cm1

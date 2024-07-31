@@ -10,7 +10,7 @@ services:
       - POSTGRES_DB=burguerdb
     volumes:
       - "./data:/var/lib/postgresql/data"
-      - ./sql/sql-initial.sql:/docker-entrypoint-initdb.d/db.sql:ro
+      #- ./sql/sql-initial.sql:/docker-entrypoint-initdb.d/db.sql:ro
       #- "/etc/timezone:/etc/timezone:ro"
       #- "/etc/localtime:/etc/localtime:ro"
     networks:

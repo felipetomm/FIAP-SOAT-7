@@ -24,6 +24,6 @@ spec:
         - image: felipetomm/fiap-soat-7:tech-challenge-api
           name: techchallenge-webapi
           ports:
-            - containerPort: 7274
+            - containerPort: 8080
               protocol: TCP
       restartPolicy: Always
