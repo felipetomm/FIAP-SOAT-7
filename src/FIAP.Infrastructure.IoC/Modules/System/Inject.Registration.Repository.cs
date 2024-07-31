@@ -10,6 +10,7 @@ public static partial class InjectSystem
     public static void RegisterRepository(IServiceCollection services)
     {
         services.AddScoped<ICustomersRepository, CustomersRepository>();
+        services.AddScoped<IPaymentsRepository, PaymentsRepository>();
         services.AddScoped<IProductsRepository, ProductsRepository>();
         services.AddScoped<IOrdersRepository, OrdersRepository>();
     }

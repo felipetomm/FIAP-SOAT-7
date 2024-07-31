@@ -1,4 +1,5 @@
 using FIAP.Application.Interfaces;
+using FIAP.Domain.Entities.Enums;
 using FIAP.Domain.Entities.Store;
 
 namespace FIAP.Application.Services;
@@ -16,7 +17,16 @@ public partial class OrderUseCases
         var result = await _repository.SaveAsync(new Orders(
             combos: combos,
             customer: customer,
-            status: Domain.Entities.Enums.OrderStatus.SENT_TO_KITCHEN
+            status: OrderStatus.SENT_TO_KITCHEN
+        ));
+
+        await _uow.CommitAsync();
+
+        await _paymentsRepository.SaveAsync(new Payments(
+            id: null,
+            status: PaymentStatus.PENDING,
+            gateway: PaymentGateway.FAKE_GATEWAY,
+            amount: result.OrderValue
         ));
 
         await _uow.CommitAsync();
