@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.34.0 (cbf2835db)
   labels:
     io.kompose.service: tech-challenge-api
-  name: tech-challenge-api
+  name: dpl-tech-challenge-api
 spec:
   replicas: 1
   selector:
@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - image: felipetomm/fiap-soat-7:tech-challenge-api
-          name: techchallenge-webapi
+          name: tech-challenge-api
           ports:
             - containerPort: 8080
               protocol: TCP

@@ -6,11 +6,11 @@ metadata:
     kompose.version: 1.34.0 (cbf2835db)
   labels:
     io.kompose.service: tech-challenge-db
-  name: tech-challenge-db
+  name: svc-tech-challenge-db
 spec:
+  type: NodePort
   ports:
-    - name: "5432"
-      port: 5432
-      targetPort: 5432
+    - port: 5432
+      nodePort: 30002
   selector:
     io.kompose.service: tech-challenge-db

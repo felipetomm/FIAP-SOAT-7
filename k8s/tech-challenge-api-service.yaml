@@ -6,11 +6,11 @@ metadata:
     kompose.version: 1.34.0 (cbf2835db)
   labels:
     io.kompose.service: tech-challenge-api
-  name: tech-challenge-api
+  name: svc-tech-challenge-api
 spec:
+  type: NodePort
   ports:
-    - name: "8080"
-      port: 8080
-      targetPort: 8080
+    - port: 8080
+      nodePort: 30001
   selector:
     io.kompose.service: tech-challenge-api
