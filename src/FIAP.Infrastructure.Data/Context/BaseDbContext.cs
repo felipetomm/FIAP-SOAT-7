@@ -25,7 +25,12 @@ public partial class BaseDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
+        // Prioriza a config vinda do container, senão pega do appsettings.
+        var connectionString = !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("DB_CONNECTION_STRING"))
+            ? Environment.GetEnvironmentVariable("DB_CONNECTION_STRING")
+            : Configuration.GetConnectionString("WebApiDatabase");
+
+        optionsBuilder.UseNpgsql(connectionString);
     }
 
     public void SetDetached<TEntity>(TEntity entity) where TEntity : class
