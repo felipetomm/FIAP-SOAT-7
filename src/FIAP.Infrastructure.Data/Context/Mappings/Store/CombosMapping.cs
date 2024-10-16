@@ -31,5 +31,9 @@ public class CombosMapping : IEntityTypeConfiguration<Combos>
 
         entity.Property(x => x.OrderId)
             .HasColumnName("order_id");
+
+        entity.HasOne(d => d.Order)
+            .WithMany(x => x.Combos)
+            .HasForeignKey(d => d.OrderId);
     }
 }

@@ -14,26 +14,26 @@ public class Payments : EntityBaseSoft<long>
     protected Payments() { }
 
     public Payments(
-        long? id,
         PaymentStatus status,
         PaymentGateway gateway,
-        decimal amount
+        decimal amount,
+        string externalTransactionId
     )
     {
         var validationResult = Validate(
             status: status,
             gateway: gateway,
-            amount: amount
+            amount: amount,
+            externalTransactionId: externalTransactionId
         );
 
         if (validationResult.IsInvalid())
             throw new ArgumentException(validationResult.GetErrorsMessage());
 
-        if (id.HasValue)
-            Id = id.Value;
         Status = status;
         Gateway = gateway;
         Amount = amount;
+        ExternalTransactionId = externalTransactionId;
     }
 
     public void ApprovePayment(
@@ -56,7 +56,8 @@ public class Payments : EntityBaseSoft<long>
     private DomainValidationResult Validate(
         PaymentStatus status,
         PaymentGateway gateway,
-        decimal amount
+        decimal amount,
+        string externalTransactionId
     )
     {
         var validationResult = new DomainValidationResult();
@@ -69,6 +70,9 @@ public class Payments : EntityBaseSoft<long>
 
         if (gateway == default)
             validationResult.AddError("Payment Gateway is mandatory");
+
+        if (externalTransactionId.IsEmpty())
+            validationResult.AddError("External Transaction Identification is mandatory to approve the payment");
 
         #region APENAS_PARA_PERIODO_DE_TESTE
 

@@ -36,7 +36,7 @@ public class Combos : EntityBaseSoft<long>
     {
         var result = new DomainValidationResult();
 
-        if (items?.Any() ?? false)
+        if (!items?.Any() ?? false)
             result.AddError("A Combo cannot exist without items");
 
         var duplicatedCategories = GetDuplicatedProductCategories(items);

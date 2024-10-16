@@ -37,5 +37,13 @@ public class ComboItemsMapping : IEntityTypeConfiguration<ComboItems>
 
         entity.Property(x => x.Quantity)
             .HasColumnName("quantity");
+
+        entity.HasOne(d => d.Product)
+            .WithMany(x => x.ComboItems)
+            .HasForeignKey(d => d.ProductId);
+
+        entity.HasOne(d => d.Combo)
+            .WithMany(x => x.Items)
+            .HasForeignKey(d => d.ComboId);
     }
 }

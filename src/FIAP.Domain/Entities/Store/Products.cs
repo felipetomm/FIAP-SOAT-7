@@ -13,7 +13,12 @@ public class Products : EntityBaseSoft<long>
     public Category Category { get; private set; }
     public int TimeToPrepareMinutes { get; private set; }
 
-    protected Products() { }
+    public virtual ICollection<ComboItems> ComboItems { get; set; }
+
+    protected Products()
+    {
+        ComboItems = new HashSet<ComboItems>();
+    }
 
     public Products(
         long? id,
@@ -47,6 +52,7 @@ public class Products : EntityBaseSoft<long>
         Created = DateTime.UtcNow;
         Deleted = false;
         Hash = Guid.NewGuid();
+        ComboItems = new HashSet<ComboItems>();
     }
 
     private DomainValidationResult Validate(

@@ -43,9 +43,9 @@ public class PaymentsRepository : IPaymentsRepository
         payment.Modified = DateTime.Now;
         payment.Hash = Guid.NewGuid();
 
-        var result = await _dbContext.Payments.AddAsync(payment);
+        _dbContext.Payments.Update(payment);
 
-        return result.Entity;
+        return payment;
     }
 
 }

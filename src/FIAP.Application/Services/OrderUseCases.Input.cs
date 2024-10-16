@@ -1,4 +1,5 @@
 using FIAP.Application.Interfaces;
+using FIAP.Domain.Dtos.ExternalServices;
 using FIAP.Domain.Entities.Enums;
 using FIAP.Domain.Entities.Store;
 
@@ -22,11 +23,20 @@ public partial class OrderUseCases
 
         await _uow.CommitAsync();
 
+        var payment = await _paymentGatewayService.CreatePaymentAsync(
+            new CreatePaymentDto
+            {
+                Amount = result.OrderValue,
+                PaymentMethod = "PIX",
+                TransactionId = Guid.NewGuid()
+            }
+        );
+
         await _paymentsRepository.SaveAsync(new Payments(
-            id: null,
             status: PaymentStatus.PENDING,
             gateway: PaymentGateway.FAKE_GATEWAY,
-            amount: result.OrderValue
+            amount: result.OrderValue,
+            externalTransactionId: payment.ExternalTransactionId
         ));
 
         await _uow.CommitAsync();

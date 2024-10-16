@@ -82,7 +82,7 @@ public class ProductsController : DbControllerBase
 
         var findCategory = (Category)EnumExtensions.GetFromAlternateValue(category, typeof(Category));
         if (findCategory == default)
-            return BadRequest("Invalid order status");
+            return BadRequest("Invalid product category");
 
         return Ok(await _useCases.FindProductsByCategoryAsync(findCategory));
     }
