@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using System.Data.Common;
+using System.Text.RegularExpressions;
 
 namespace FIAP.Infrastructure.IoC;
 public static class MigrationInitializer
@@ -125,7 +126,10 @@ public static class MigrationInitializer
             result.Add(data);
         }
 
-        return [.. result.OrderBy(x => x.FileName)];
+        // Ordena os arquivos de acordo com a sua versão
+        return result
+            .OrderBy(x => int.Parse(Regex.Match(x.FileName, @"\d+").Value))
+            .ToList();
     }
 
     private sealed class DataImportSql

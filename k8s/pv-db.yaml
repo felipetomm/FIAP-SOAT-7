@@ -1,0 +1,15 @@
+apiVersion: v1 # Persistence Volume do sqlserver
+kind: PersistentVolume
+metadata:
+  name: pv-database-postgres
+  labels:
+    name: pv-database-postgres
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: manual
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/db

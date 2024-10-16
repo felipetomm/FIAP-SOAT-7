@@ -1,9 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yaml
-    kompose.version: 1.34.0 (cbf2835db)
   labels:
     io.kompose.service: tech-challenge-api
   name: dpl-tech-challenge-api
@@ -14,9 +11,6 @@ spec:
       io.kompose.service: tech-challenge-api
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yaml
-        kompose.version: 1.34.0 (cbf2835db)
       labels:
         io.kompose.service: tech-challenge-api
     spec:
@@ -26,4 +20,10 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          env:
+            - name: DB_CONNECTION_STRING
+              valueFrom:
+                secretKeyRef:
+                  name: db-secrets
+                  key: connectionString
       restartPolicy: Always
