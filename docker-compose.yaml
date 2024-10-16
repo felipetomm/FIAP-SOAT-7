@@ -5,9 +5,9 @@ services:
     container_name: "TechChallenge_DB_Postgres"
     restart: always
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=burguerdb
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
     volumes:
       - "./data:/var/lib/postgresql/data"
       #- ./sql/sql-initial.sql:/docker-entrypoint-initdb.d/db.sql:ro
@@ -26,6 +26,8 @@ services:
       - tech-challenge-db
     networks:
       - tech-challenge-network
+    environment:
+      - DB_CONNECTION_STRING=Server=${DB_HOST};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASS};Search Path=${DB_NAME};
     ports:
       - 8080:8080
 
