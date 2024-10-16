@@ -40,6 +40,13 @@ public class PaymentsRepository : IPaymentsRepository
 
     public async Task<Payments> UpdateAsync(Payments payment)
     {
+        var currentRegistry = await _dbContext.Payments
+            .Where(x => x.Id == payment.Id && !x.Deleted)
+            .FirstOrDefaultAsync();
+
+        if (currentRegistry == null)
+            throw new ArgumentException("Domain object not found");
+
         payment.Modified = DateTime.Now;
         payment.Hash = Guid.NewGuid();
 
